@@ -1,0 +1,65 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@layer base{
+    *{
+        @apply text-white;
+    }
+    body { 
+        display: grid; 
+        grid-template-columns: 25% 50% 25%; 
+        height: 100vh; 
+        margin: 0; 
+        padding: 0;
+    } 
+    section { 
+        flex: 1; 
+        padding: 20px; 
+        border: none; 
+        overflow: auto;
+        height: 100%; 
+    }
+    nav{
+        display: flex;
+        @apply mt-10;
+        align-items: center;
+        border-bottom: 1px solid black;
+    }
+    nav ul{
+        display: flex-columns;
+        justify-content: space-between;
+        @apply mt-5;
+        width: 100%;
+    }
+    nav ul li{
+        display: flex;
+        @apply mb-5;
+    }
+    nav ul li a{
+        @apply ml-2;
+    }
+
+    nav ul li a:hover{
+        @apply text-blue-500;
+    }
+
+    select option {
+        @apply text-black;
+    }
+    
+    
+
+    #section1{
+        justify-content: center;
+        align-items: center;
+        margin: 10px;
+    }
+    #section2{
+        
+    }
+    #section3{
+        
+    }
+}

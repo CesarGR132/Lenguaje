@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple tailwind starter</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<style>
+    body{
+        background-color: #0f172a;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+    }
+</style>
+
+<body class="bg-size-cover">
+    <section id="section1"> 
+        <h2>Lenguaje proyecto</h2> 
+        <nav>
+            <ul>
+                <li><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M4.26 10.147a60.438 60.438 0 0 0-.491 6.347A48.62 48.62 0 0 1 12 20.904a48.62 48.62 0 0 1 8.232-4.41 60.46 60.46 0 0 0-.491-6.347m-15.482 0a50.636 50.636 0 0 0-2.658-.813A59.906 59.906 0 0 1 12 3.493a59.903 59.903 0 0 1 10.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.717 50.717 0 0 1 12 13.489a50.702 50.702 0 0 1 7.74-3.342M6.75 15a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Zm0 0v-3.675A55.378 55.378 0 0 1 12 8.443m-7.007 11.55A5.981 5.981 0 0 0 6.75 15.75v-1.5" />
+                  </svg>
+                  <button onclick="loadContent('#section2', 'html/information.html')">Home</button></li>
+                <li><button onclick="loadContent('#section2', 'html/content.html')">Inputs</button></li>
+                <li><button href="#section4">Diccionarios</button></li>
+                
+            </ul>
+        </nav> 
+    </section>
+    
+    <section id="section2" class="block text-center">
+         <h1 class="text-3xl">Bienvenido</h1> 
+         <address class="text-start">
+            <p>Este proyecto es para la materia de Teoria informatica de la computación realizado por: 
+                <br>
+                <p>>Cesar Gabriel Mariscal Ruiz</p>
+                <p>
+                <p>>5to Ingenieria de software</p>
+                <p>
+                <p>>Universidad Enrique Diaz de Leon</p>
+            </p>
+         </address>
+    </section> 
+    
+    <section id="section3" class="p-5"> 
+        <!-- Dictionary containers -->
+        <div class="block bg-[#293548] rounded-xl h-auto w-auto p-5 mt-2">
+            <h2 class=" font-mono font-bold text-xl">Dictionary</h2>
+            <select id="dictionary" class="bg-[#1e293b] rounded-lg mt-2 w-5/6 text-white font-mono p-2">
+                <option value="">Selecciona un diccionario</option>
+                <option value="" disabled selected style="color: white;">Diccionario 1</option>
+            </select>
+            <button id="get-definition" class="bg-[#38bdf8] mt-2 p-1 pr-4 pl-4 rounded-xl ">Definition</button>
+        </div>
+
+        <!-- Stadistics paramenters -->
+        <div class="block bg-[#293548] rounded-xl h-auto w-auto p-5 mt-2">
+            <h2 class=" font-mono font-bold text-xl">Stadistics</h2>
+            <br>
+            <h1 class="font-mono text-white font-bold">Phrase</h1>
+            <p id="aresult">.........</p>
+            <p id="letters-result">.........</p>
+            <p style="margin-top: 10px;">..........</p>
+            <p id = "words-result">.........</p>
+            <p id="result"></p>
+            <br>
+            <h2 class="font-mono text-white font-bold">Colores</h2>
+            <p class="color1" id="colors1">.........</p>
+            <p class="color2" id="colors2">.........</p>
+            <p class="color3" id="colors3">...........</p>
+            <br>
+            <h2 class="font-mono text-white font-bold">Numeros</h2>
+            <select name="" id="numbers-registered" class=" bg-[#1e293b] rounded-lg mt-2 w-5/6 text-white font-mono p-2">
+                <option value="">Numbers registered</option>
+            </select>
+        </div>
+
+        <!-- favorite phrase -->
+         <div class="block bg-[#293548] rounded-xl h-auto w-auto p-5 mt-2">
+            <h2 class="font-mono font-bold text-xl">Current favorite phrase</h2>
+            <p id="favorite-phrase" class="font-mono text-white ">.....</p>
+         </div>
+        
+    </section>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> 
+    <script> 
+    function loadContent(sectionId, url) { 
+        $.ajax({ 
+            url: url, 
+            success: function(response) { 
+                $(sectionId).html(response); 
+            }, 
+            error: function() {
+                 $(sectionId).html('<p>Error loading content</p>');
+                }   
+            }); 
+    } 
+    </script>
+    <script src="js/sistema.js"></script>
+</body>
+</html>
