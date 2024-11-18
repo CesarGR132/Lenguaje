@@ -28,23 +28,76 @@
                   <button onclick="loadContent('#section2', 'html/information.html')">Home</button></li>
                 <li><button onclick="loadContent('#section2', 'html/content.html')">Inputs</button></li>
                 <li><button href="#section4">Diccionarios</button></li>
-                
             </ul>
-        </nav> 
+        </nav>
+        
+        <div class="button-0 w-auto">
+            <address class="text-start">
+                <p>Este proyecto es para la materia de Teoria informatica de la computación realizado por: 
+                    <br>
+                    <p>>Cesar Gabriel Mariscal Ruiz</p>
+                    <p>
+                    <p>>5to Ingenieria de software</p>
+                    <p>
+                    <p>>Universidad Enrique Diaz de Leon</p>
+                </p>
+             </address> 
+        </div>
     </section>
     
     <section id="section2" class="block text-center">
-         <h1 class="text-3xl">Bienvenido</h1> 
-         <address class="text-start">
-            <p>Este proyecto es para la materia de Teoria informatica de la computación realizado por: 
+        <div>
+            <h1>Lenguage inputs forms</h1>
+            <p></p>
+        </div>
+        
+        <!-- Phrase -->
+        <div class="block bg-[#1e293b]  rounded-3xl h-auto justify-center mt-5 p-5 pt-2 ">
+            <h1 class="m-2">Type a phrase</h1>
+            <div class="justify-center align-middle m-2">
+                <input id="phrase" type="text" placeholder="Type a phrase" class="bg-[#293548] text-white border-collapse rounded-xl p-2 mt-2 mb-4 w-full">
                 <br>
-                <p>>Cesar Gabriel Mariscal Ruiz</p>
-                <p>
-                <p>>5to Ingenieria de software</p>
-                <p>
-                <p>>Universidad Enrique Diaz de Leon</p>
-            </p>
-         </address>
+                <button id="phraseButton" class="bg-[#38bdf8] p-1 pr-4 pl-4 rounded-xl">Register</button>
+            </div>
+        </div>
+    
+        <!-- colors -->
+        <div class="block  bg-[#1e293b]  rounded-3xl border-collapse mt-10 h-auto justify-center p-5 pt-2">
+            <h1 class="m-2">Type three colors</h1>
+            <div class="col-span-3 align-middle">
+                <form>
+                    <input id="color1" type="text" class="bg-[#293548] text-white rounded-xl p-2 mt-2 mb-4 w-1/3" placeholder="Fisrt color">
+                    <input id="color2" type="text" class="bg-[#293548] text-white rounded-xl p-2 mt-2 mb-4 w-1/3" placeholder="Second color">
+                    <input id="color3" type="text" class="bg-[#293548] text-white  rounded-xl p-2 mt-2 mb-4 w-f1/3" placeholder="Third color">
+                </form>
+            </div>
+            <button id="colorButton" class="bg-[#38bdf8] p-1 pr-4 pl-4 rounded-xl ">Register</button>
+        </div>
+    
+        <!-- Numbers -->
+        <div class="block bg-[#1e293b]  rounded-3xl border-collapse mt-10 h-auto justify-center p-5 pt-2">
+            <div class="font-3xl">Type a number</div>
+            <div class="flex col-span-3 justify-center m-2 ">
+                <input id="number1" type="number" placeholder="Type a number" class="bg-[#293548] text-white rounded-xl p-2 mr-3 mt-2 mb-4 w-1/3">
+                <input id="number2" type="number" placeholder="Type a number" class="bg-[#293548] text-white rounded-xl mr-3 p-2 mt-2 mb-4 w-1/3">
+                <input id="number3" type="number" placeholder="Type a number" class="bg-[#293548] text-white rounded-xl p-2 mt-2 mb-4 w-1/3">   
+            </div>
+            <div class="flex justify-center align-center h-auto w-auto">
+                <button id="numberButton" class="bg-[#38bdf8] p-1 pr-4 pl-4 rounded-xl h-11">Register</button>
+            </div>
+        </div>
+    
+        <!-- Phrase generated -->
+        <div class="flex bg-[#1e293b]  rounded-3xl border-collapse mt-10 h-auto justify-center p-4
+         pt-2">
+            <button id="generatePhrase" type="button" class="bg-[#38bdf8] p-1 pr-4 pl-4 rounded-xl h-auto m-2">Generar frase</button>
+            <h6 id="phraseGenerate" class="text-center w-4/6 mt-6">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eum, expedita.</h6>
+            <div>
+                <button id="like-phrase" class="bg-[#38bdf8] p-1 pr-4 pl-4 rounded-xl w-auto h-auto m-2">Favorita</button>
+                <button id="dislike-phrase" class="bg-[#38bdf8] p-1 pr-4 pl-4 rounded-xl w-auto h-auto m-2">No favorita</button>
+            </div>
+        </div>
+    
     </section> 
     
     <section id="section3" class="p-5"> 
@@ -53,9 +106,9 @@
             <h2 class=" font-mono font-bold text-xl">Dictionary</h2>
             <select id="dictionary" class="bg-[#1e293b] rounded-lg mt-2 w-5/6 text-white font-mono p-2">
                 <option value="">Selecciona un diccionario</option>
-                <option value="" disabled selected style="color: white;">Diccionario 1</option>
+                <option value="" disabled selected style="color: white;">Dictionary</option>
             </select>
-            <button id="get-definition" class="bg-[#38bdf8] mt-2 p-1 pr-4 pl-4 rounded-xl ">Definition</button>
+            <button id="getMeaning" class="bg-[#38bdf8] mt-2 p-1 pr-4 pl-4 rounded-xl ">Definition</button>
         </div>
 
         <!-- Stadistics paramenters -->
@@ -65,16 +118,17 @@
             <h1 class="font-mono text-white font-bold">Phrase</h1>
             <p id="aresult">.........</p>
             <p id="letters-result">.........</p>
-            <p style="margin-top: 10px;">..........</p>
-            <p id = "words-result">.........</p>
+            <select id = "words-result" class="bg-[#1e293b] rounded-lg mt-2 w-5/6 text-white font-mono p-2">
+                <option value="">Words</option>
+            </select>
             <p id="result"></p>
             <br>
             <h2 class="font-mono text-white font-bold">Colores</h2>
-            <p class="color1" id="colors1">.........</p>
-            <p class="color2" id="colors2">.........</p>
-            <p class="color3" id="colors3">...........</p>
+            <p id="colors1">...........</p>
+            <p id="colors2">...........</p>
+            <p id="colors3">...........</p>
             <br>
-            <h2 class="font-mono text-white font-bold">Numeros</h2>
+            <h2 class="font-mono text-white font-bold">Numeros registrados</h2>
             <select name="" id="numbers-registered" class=" bg-[#1e293b] rounded-lg mt-2 w-5/6 text-white font-mono p-2">
                 <option value="">Numbers registered</option>
             </select>
@@ -85,6 +139,9 @@
             <h2 class="font-mono font-bold text-xl">Current favorite phrase</h2>
             <p id="favorite-phrase" class="font-mono text-white ">.....</p>
          </div>
+
+
+         <img src="src/img/stadistics.png">
         
     </section>
 
@@ -102,6 +159,6 @@
             }); 
     } 
     </script>
-    <script src="js/sistema.js"></script>
+    <script src="js/input.js"></script>
 </body>
 </html>
