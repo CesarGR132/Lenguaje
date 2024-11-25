@@ -1,8 +1,14 @@
 //Api URL
 const dictionaryAPI = "https://api.dictionaryapi.dev/api/v2/entries/en/";
 
+
+let name = prompt("Ingrese su nombre");
+
 //Arrays
 const alphabet = "abcdefghijklmnñopqrstuvwxyzABCDEFGHIJKLMÑOPQRSTUVWXYZ";
+let dictionary = new Array();
+let words = new Array();
+let numbers = new Array();
 const colors = [
     "rojo", "azul", "verde", "amarillo", "naranja", "negro", "blanco", "gris", "rosa", "violeta",
     "celeste", "marrón", "beige", "turquesa", "dorado", "plateado", "salmón", "café", "cian", "magenta",
@@ -32,11 +38,11 @@ function getHour(){
 
 
 if(getHour() >= 6 && getHour() < 12){
-    alert(morningGreatings[Math.floor(Math.random() * morningGreatings.length)]);
+    alert(morningGreatings[Math.floor(Math.random() * morningGreatings.length)] + " " + name);
 }else if(getHour() >= 12 && getHour() < 19){
-    alert(afternoonGreatings[Math.floor(Math.random() * afternoonGreatings.length)]);
+    alert(afternoonGreatings[Math.floor(Math.random() * afternoonGreatings.length)] + " " + name);
 }else if(getHour() >= 19 || getHour() < 6){
-    alert(nightGreatings[Math.floor(Math.random() * nightGreatings.length)]);
+    alert(nightGreatings[Math.floor(Math.random() * nightGreatings.length)] + " " + name);
 }
 
 // ----------------------------------------------
@@ -60,13 +66,15 @@ async function getDefinition(word) {
 // ----------------------------------------------
 
 
+
+
 //Registering phrase button and stadistics
 const phraseButton = document.getElementById("phraseButton");
 const phraseResult = document.getElementById("aresult");
 const letters = document.getElementById("letters-result");
 const phrase = document.getElementById("phrase");
 const wordResult = document.getElementById("words-result");
-let dictionary = new Array();
+
 
 phraseButton.addEventListener("click", () => {  
     let counter = counterLetterA(phrase.value);
@@ -151,7 +159,7 @@ const number2 = document.getElementById("number2");
 const number3 = document.getElementById("number3");
 const numberButton = document.getElementById("numberButton");
 
-let numbers = new Array();
+
 
 numberButton.addEventListener("click", () => {
     addNumbers(number1.value.trim());
@@ -176,7 +184,6 @@ numberButton.addEventListener("click", () => {
 
 const getPhraseButton = document.getElementById("generatePhrase");
 const randomPhrase = document.getElementById("phraseGenerate");
-
 getPhraseButton.addEventListener("click", () => {
     let phrase = generateRandomPhrase();
     if(phrase == undefined){
@@ -325,6 +332,33 @@ function verifyNumbers(number){
 
     return /^\d+$/.test(number);
 }
+
+//function to check if the word is written correctly using gramatical
+
+const correction = document.getElementById("correction");
+const correctionText = document.getElementById("input-correction");
+correction.addEventListener("click", () => {
+    gsCorrection( correctionText.value.trim());
+});
+
+function gsCorrection(text){
+    const NLPCloudClient = require('nlpcloud');
+    const user = new NLPCloudClient({model:'llama-3-1-405b',token:' 1e60c1935c4522255f9a94f74f4fd0d693eba288 ',gpu:true})
+    // Returns an Axios promise with the results.
+    // In case of success, results are contained in `response.data`. 
+    // In case of failure, you can retrieve the status code in `err.response.status` 
+    // and the error message in `err.response.data.detail`.
+    user.gsCorrection({text:text}).then(function (response) {
+        console.log(response.data);
+    })
+    .catch(function (err) {
+        console.error(err.response.status);
+        console.error(err.response.data.detail);
+    });
+}
+
+
+
 
 // ----------------------------------------------
 

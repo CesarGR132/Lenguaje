@@ -25,9 +25,8 @@
                 <li><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M4.26 10.147a60.438 60.438 0 0 0-.491 6.347A48.62 48.62 0 0 1 12 20.904a48.62 48.62 0 0 1 8.232-4.41 60.46 60.46 0 0 0-.491-6.347m-15.482 0a50.636 50.636 0 0 0-2.658-.813A59.906 59.906 0 0 1 12 3.493a59.903 59.903 0 0 1 10.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.717 50.717 0 0 1 12 13.489a50.702 50.702 0 0 1 7.74-3.342M6.75 15a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Zm0 0v-3.675A55.378 55.378 0 0 1 12 8.443m-7.007 11.55A5.981 5.981 0 0 0 6.75 15.75v-1.5" />
                   </svg>
-                  <button onclick="loadContent('#section2', 'html/information.html')">Home</button></li>
-                <li><button onclick="loadContent('#section2', 'html/content.html')">Inputs</button></li>
-                <li><button href="#section4">Diccionarios</button></li>
+                  <button onclick="loadContent('#section2', 'html/information.html')">Inputs</button></li>
+                <!-- <li><button onclick="loadContent('#section2', 'html/content.html')">Home</button></li> -->
             </ul>
         </nav>
         
@@ -97,7 +96,12 @@
                 <button id="dislike-phrase" class="bg-[#38bdf8] p-1 pr-4 pl-4 rounded-xl w-auto h-auto m-2">No favorita</button>
             </div>
         </div>
-    
+        
+        <!-- Text correction -->
+        <div class="block bg-[#1e293b] rounded-2xl h-auto w-auto p-5 mt-5">
+            <input id="input-correction" class="bg-[#293548] text-white  rounded-xl p-2 mt-2 mb-4 w-2/3" placeholder="correction"></input>
+            <button id="correction" class="bg-[#38bdf8] p-1 pr-4 pl-4 rounded-xl w-auto h-auto m-2">Correct text</button>
+         </div>
     </section> 
     
     <section id="section3" class="p-5"> 
@@ -139,6 +143,9 @@
             <h2 class="font-mono font-bold text-xl">Current favorite phrase</h2>
             <p id="favorite-phrase" class="font-mono text-white ">.....</p>
          </div>
+
+
+         
 
 
          <img src="src/img/stadistics.png">

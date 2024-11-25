@@ -25,7 +25,7 @@
         display: flex;
         @apply mt-10;
         align-items: center;
-        border-bottom: 1px solid black;
+        border-bottom: 1px solid white;
     }
     nav ul{
         display: flex-columns;
