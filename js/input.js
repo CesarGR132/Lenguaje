@@ -1,97 +1,98 @@
-//Api URL
-const dictionaryAPI = "https://api.dictionaryapi.dev/api/v2/entries/en/";
+// Api URL
+const dictionaryAPI = 'https://api.dictionaryapi.dev/api/v2/entries/en/';
 
+// eslint-disable-next-line no-undef
+const name = prompt('Ingrese su nombre')
 
-let name = prompt("Ingrese su nombre");
-
-//Arrays
-const alphabet = "abcdefghijklmnñopqrstuvwxyzABCDEFGHIJKLMÑOPQRSTUVWXYZ";
-let dictionary = new Array();
-let words = new Array();
+// Arrays
+const alphabet = 'abcdefghijklmnñopqrstuvwxyzABCDEFGHIJKLMÑOPQRSTUVWXYZ';
+// eslint-disable-next-line no-array-constructor
+const dictionary = new Array()
+// eslint-disable-next-line no-unused-vars
+const words = new Array();
+// eslint-disable-next-line prefer-const
 let numbers = new Array();
 const colors = [
-    "rojo", "azul", "verde", "amarillo", "naranja", "negro", "blanco", "gris", "rosa", "violeta",
-    "celeste", "marrón", "beige", "turquesa", "dorado", "plateado", "salmón", "café", "cian", "magenta",
-    "lavanda", "teal", "marfil", "ocre", "pardo", "carmesí", "escarlata", "esmeralda", "turmalina", "zafiro",
-    "rubí", "topacio", "aguamarina", "amatista", "cuarzo", "cristal", "perla", "diamante", "carbón", "grafito",
-    "plomo", "aluminio", "cobre", "bronce", "latón", "hierro", "acero", "estaño", "platino", "paladio",
-    "rodio", "iridio", "rutenio", "osmio", "titanio", "vanadio", "cromo", "manganeso", "cobalto", "níquel",
+  'rojo', 'azul', "verde", "amarillo", "naranja", "negro", 'blanco', 'gris', 'rosa', 'violeta',
+    'celeste', "marrón", "beige", "turquesa", "dorado", "plateado", "salmón", "café", "cian", "magenta",
+    'lavanda', "teal", "marfil", "ocre", "pardo", "carmesí", "escarlata", "esmeralda", "turmalina", "zafiro",
+    "rubí", 'topacio', "aguamarina", "amatista", "cuarzo", "cristal", "perla", "diamante", "carbón", "grafito",
+    "plomo", 'aluminio', "cobre", "bronce", "latón", "hierro", "acero", "estaño", "platino", "paladio",
+    "rodio", 'iridio', "rutenio", "osmio", "titanio", "vanadio", "cromo", "manganeso", "cobalto", "níquel",
     "cinc", "galio", "germanio", "arsénico", "selenio", "bromo", "kriptón", "rubidio", "estroncio", "itrio",
     "circonio", "niobio", "molibdeno", "tecnecio", "rutenio", "rodio", "paladio", "plata", "cadmio", "indio",
     "antimonio", "telurio", "yodo", "xenón", "cesio", "bario", "lantano", "cerio", "praseodimio", "neodimio",
     "prometio", "samario", "europio", "gadolinio", "terbio", "disprosio", "holmio", "erbio", "tulio", "iterbio",
     "lutecio", "hafnio", "tantalio", "wolframio", "renio", "mercurio", "talio", "plomo", "bismuto", "polonio"
-];
-
-
+]
 
 // Welcome greetings
-let morningGreatings = ["Buenos dias", "Que tenga un lindo dia", "Comenzando un buen dia"];
-let afternoonGreatings = ["Buenas tardes", "Que tenga una linda tarde", "Disfrute de la tarde"];
-let nightGreatings = ["Buenas noches", "Que tenga una linda noche"];
+const morningGreatings = ['Buenos dias', 'Que tenga un lindo dia', 'Comenzando un buen dia'];
+const afternoonGreatings = ['Buenas tardes', 'Que tenga una linda tarde', 'Disfrute de la tarde'];
+const nightGreatings = ['Buenas noches', 'Que tenga una linda noche']
 
-function getHour(){
-    let date = new Date();
-    let hour = date.getHours();
-    return hour;
+function getHour () {
+  const date = new Date()
+  const hour = date.getHours()
+  return hour
 }
 
-
-if(getHour() >= 6 && getHour() < 12){
-    alert(morningGreatings[Math.floor(Math.random() * morningGreatings.length)] + " " + name);
-}else if(getHour() >= 12 && getHour() < 19){
-    alert(afternoonGreatings[Math.floor(Math.random() * afternoonGreatings.length)] + " " + name);
-}else if(getHour() >= 19 || getHour() < 6){
-    alert(nightGreatings[Math.floor(Math.random() * nightGreatings.length)] + " " + name);
+if (getHour() >= 6 && getHour() < 12) {
+  // eslint-disable-next-line no-undef
+  alert(morningGreatings[Math.floor(Math.random() * morningGreatings.length)] + ' ' + name)
+} else if (getHour() >= 12 && getHour() < 19) {
+  // eslint-disable-next-line no-undef
+  alert(afternoonGreatings[Math.floor(Math.random() * afternoonGreatings.length)] + ' ' + name)
+} else if (getHour() >= 19 || getHour() < 6) {
+  // eslint-disable-next-line no-undef
+  alert(nightGreatings[Math.floor(Math.random() * nightGreatings.length)] + ' ' + name)
 }
 
 // ----------------------------------------------
 
 // Function to get the definition of a word from the dictionary API
-async function getDefinition(word) {
-    try {
-        const response = await fetch(`${dictionaryAPI}${word}`);
-        const data = await response.json();
-        if (data && data.length > 0 && data[0].meanings && data[0].meanings.length > 0) {
-            return data[0].meanings[0].definitions[0].definition;
-        } else {
-            return "No se encontró la definición.";
-        }
-    } catch (error) {
-        console.error("Error fetching definition:", error);
-        return "Error al obtener la definición.";
+async function getDefinition (word) {
+  try {
+    const response = await fetch(`${dictionaryAPI}${word}`)
+    const data = await response.json()
+    if (data && data.length > 0 && data[0].meanings && data[0].meanings.length > 0) {
+      return data[0].meanings[0].definitions[0].definition
+    } else {
+      return 'No se encontró la definición.'
     }
+  } catch (error) {
+    console.error('Error fetching definition:', error)
+    return 'Error al obtener la definición.'
+  }
 }
 
 // ----------------------------------------------
 
+// Registering phrase button and stadistics
+const phraseButton = document.getElementById('phraseButton')
+const phraseResult = document.getElementById('aresult')
+const letters = document.getElementById('letters-result')
+const phrase = document.getElementById('phrase')
 
+phraseButton.addEventListener('click', () => {
+  const counter = counterLetterA(phrase.value)
+  const letterCounter = counterLetters(phrase.value)
 
+  wordInPhrase(phrase.value.trim())
 
-//Registering phrase button and stadistics
-const phraseButton = document.getElementById("phraseButton");
-const phraseResult = document.getElementById("aresult");
-const letters = document.getElementById("letters-result");
-const phrase = document.getElementById("phrase");
-const wordResult = document.getElementById("words-result");
-
-
-phraseButton.addEventListener("click", () => {  
-    let counter = counterLetterA(phrase.value);
-    let letterCounter = counterLetters(phrase.value);
-
-    wordInPhrase(phrase.value.trim());
-
-    phraseResult.innerHTML = `<p>Letras a: ${counter}</p>`;
-    letters.innerHTML = `<p>Espacios: ${letterCounter}</p>`;
+  phraseResult.innerHTML = `<p>Letras a: ${counter}</p>`
+  letters.innerHTML = `<p>Espacios: ${letterCounter}</p>`
     
     //Add options to select wordResult by a foreach
     const inputWords = document.getElementById("words-result")
     inputWords.innerHTML = "";
     dictionary.forEach(word => {
+        const change = word.toLowerCase();
+        const wordFormatted = capitalizedWord(change);
         const option = document.createElement("option");
-        option.value = word;
-        option.text = word;
+        option.value = wordFormatted;
+        option.text = wordFormatted;
+        addWordToServer(wordFormatted)
         inputWords.appendChild(option);
     });
 });
@@ -257,35 +258,26 @@ function verifyColor(color){
     }
 }
 
-
-function counterLetterA(phrase){
-    let counter = 0;
-    for(let i = 0;i < phrase.length;i++){
-        if(phrase[i] == 'a' || phrase[i] == 'A'){
-            counter++;
-        }
+function counterLetterA (phrase) {
+  let counter = 0
+  for (let i = 0; i < phrase.length; i++) {
+    // eslint-disable-next-line eqeqeq
+    if (phrase[i] == 'a' || phrase[i] == 'A') {
+      counter++
     }
-    return counter;
+  }
+  return counter
 }
 
-function counterNumber3(numbers){
-    let counter = 0;
-    for(let i = 0;i < numbers.length;i++){
-        if(numbers[i] == 3){
-            counter++;
-        }
+function counterLetters (phrase) {
+  let counter = 0
+  for (let i = 0; i < phrase.length; i++) {
+    // eslint-disable-next-line eqeqeq
+    if (phrase[i] == ' ') {
+      counter++
     }
-    return counter;
-}
-
-function counterLetters(phrase){
-    let counter = 0;
-    for(let i = 0;i < phrase.length;i++){
-        if(phrase[i] == ' '){
-            counter++;
-        }
-    }
-    return counter;
+  }
+  return counter
 }
 
 
@@ -357,8 +349,69 @@ function gsCorrection(text){
     });
 }
 
-
-
-
 // ----------------------------------------------
+
+const wordSearched = document.getElementById('word-searched')
+const btnSearch = document.getElementById('btn-search')
+
+btnSearch.addEventListener('click', async () => {
+  const word = wordSearched.value
+  const wordSwitch = word.toLowerCase()
+  const wordFormatted = capitalizedWord(wordSwitch)
+
+  try {
+    const response = await fetch('http://localhost:3000/search', {
+        method: 'POST',
+        headers: {
+        'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ wordSearched: wordFormatted })
+    })
+
+    const data = await response.json()
+
+    if (response.ok) {
+        alert(
+          'id: ' + data._id + '\n' +
+          'Palabra: ' + data.word + '\n' +
+          'Fecha de registro: ' + data.date
+        )
+    } else {
+        alert('Error al buscar la palabra')
+    }
+
+ } catch (error) {
+    alert('Word not found')
+ }
+})
+
+
+async function addWordToServer (word) {
+    try{
+        const response = await fetch('http://localhost:3000/addWord', {
+            method: 'POST',
+            headers: {
+            'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ word })
+        })
+        const data = await response.json()
+        if (response.ok) {
+        console.log('Palabra agregada correctamente: '+ word)
+    } else {
+      console.log('Error al agregar la palabra')
+      }
+    } catch (error) {
+        console.log('Error al agregar la palabra')
+    }
+}
+
+
+function capitalizedWord (word) {
+    const firstLetter = word.charAt(0)
+    const firstLetterCap = firstLetter.toUpperCase()
+    const remainingLetters = word.slice(1)
+    const capitalizedWord = firstLetterCap + remainingLetters
+    return capitalizedWord
+}
 
